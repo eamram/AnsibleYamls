@@ -1,0 +1,126 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+#green.example.com
+#blue.example.com
+#192.168.100.1
+#192.168.100.10
+
+[all:vars]
+ansible_ssh_user=scs
+
+[scs-new]
+10.10.29.91
+10.10.29.92
+10.10.29.93
+10.10.29.94
+10.10.29.95
+10.10.29.96
+10.10.29.97
+10.10.29.98
+
+[scs]
+10.10.29.21
+10.10.29.22
+10.10.29.23
+10.10.29.24
+10.10.29.25
+10.10.29.26
+10.10.29.27
+#10.10.29.28
+10.10.29.31
+10.10.29.32
+10.10.29.33
+10.10.29.34
+10.10.29.35
+10.10.29.36
+10.10.29.37
+10.10.29.38
+#10.10.29.41
+#10.10.29.42
+#10.10.29.43
+#10.10.29.44
+#10.10.29.45
+#10.10.29.46
+#10.10.29.47
+#10.10.29.48
+#10.10.29.51
+#10.10.29.52
+#10.10.29.53
+#10.10.29.54
+#10.10.29.55
+#10.10.29.56
+#10.10.29.57
+#10.10.29.58
+10.10.29.61
+10.10.29.62
+10.10.29.63
+10.10.29.64
+10.10.29.65
+10.10.29.66
+10.10.29.67
+10.10.29.68
+10.10.29.71
+10.10.29.72
+10.10.29.73
+10.10.29.74
+10.10.29.75
+10.10.29.76
+10.10.29.77
+10.10.29.78
+10.10.29.81
+10.10.29.82
+10.10.29.83
+10.10.29.84
+10.10.29.85
+10.10.29.86
+10.10.29.87
+10.10.29.88
+10.10.29.91
+10.10.29.92
+10.10.29.93
+10.10.29.94
+10.10.29.95
+10.10.29.96
+10.10.29.97
+10.10.29.98
+
+# Ex 2: A collection of hosts belonging to the 'webservers' group
+
+#[webservers]
+#alpha.example.org
+#beta.example.org
+#192.168.1.100
+#192.168.1.110
+
+
+
+
+# If you have multiple hosts following a pattern you can specify
+# them like this:
+
+#www[001:006].example.com
+
+# Ex 3: A collection of database servers in the 'dbservers' group
+
+#[dbservers]
+#
+#db01.intranet.mydomain.net
+#db02.intranet.mydomain.net
+#10.25.1.56
+#10.25.1.57
+
+# Here's another example of host ranges, this time there are no
+# leading 0s:
+
+#db-[99:101]-node.example.com
+

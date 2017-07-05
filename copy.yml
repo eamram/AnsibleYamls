@@ -1,0 +1,7 @@
+ - hosts: scs
+   become: yes
+   become_user: root
+   become_method: sudo
+   tasks:
+     - name: copy some file
+       copy: src=/home/cit/remote_reader/supervisord.conf dest=/etc/supervisor/supervisord.conf 

@@ -1,0 +1,13 @@
+- hosts: scs-new
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks: 
+     - name: edit visudo
+       lineinfile:
+         dest: /etc/sudoers
+         state: present
+         regexp: '%sudo   ALL=(ALL:ALL) ALL'
+         line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+
+

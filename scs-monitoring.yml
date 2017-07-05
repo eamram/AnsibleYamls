@@ -1,0 +1,15 @@
+- hosts: scs
+  tasks:
+    - name: Install latest version of supervisor
+      apt:  name=supervisor state=latest 
+      become: yes 
+      become_method: sudo
+    - name: Install svn
+      apt:  name=subversion state=latest 
+      become: yes 
+      become_method: sudo
+    - name: Sensu
+      apt:  name=sensu state=latest
+      become: yes
+      become_method: sudo
+

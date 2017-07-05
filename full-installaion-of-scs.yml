@@ -1,0 +1,38 @@
+- hosts: scs-new
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: delete not SVN folder
+      shell: rm -rf /home/scs/remote_reader
+    - name: install pcscd package
+      apt:
+        name: pcscd
+        update_cache: yes
+    - name: install pcsc-tools package
+      apt:
+        name: pcsc-tools
+        update_cache: yes
+#    - name: edit libccid_Info.plist file
+#      lineinfile:
+#        dest: /etc/libccid_Info.plist
+#        state: present
+#        regexp: '<string>0x072F</string>'
+#        line: '<string>0x076b</string>'
+#    - name: edit libccid_Info.plist file
+#      lineinfile:
+#        dest: /etc/libccid_Info.plist
+#        state: present
+#        regexp: '<string>0x90CC</string>'
+#        line: '<string>0x3031</string>'
+#    - name: edit libccid_Info.plist file
+#      lineinfile:
+#        dest: /etc/libccid_Info.plist
+#        state: present
+#        regexp: '<string>ACS ACR 38U-CCID</string>'
+#        line: '<string>OmniKey AG 3031</string>'
+    - name: update date and time
+      shell: timedatectl set-timezone 'Asia/Jerusalem'
+    - name: update and upgrade
+      shell: apt-get update -y & apt-get upgrade -y
+

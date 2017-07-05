@@ -1,0 +1,10 @@
+- hosts: scs
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+  - name: restart machine
+    command: shutdown -r now "Ansible updates triggered"
+    async: 0
+    poll: 0
+    ignore_errors: true

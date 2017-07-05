@@ -1,0 +1,33 @@
+- hosts: scs-new
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks: 
+    - name: Install the GPG public key
+      shell: wget -q https://sensu.global.ssl.fastly.net/apt/pubkey.gpg -O- | sudo apt-key add -
+    - name: Create an APT configuration file at /etc/apt/sources.list.d/sensu.list
+      shell: echo "deb     https://sensu.global.ssl.fastly.net/apt sensu main" | sudo tee /etc/apt/sources.list.d/sensu.list
+    - name: Update APT
+      shell: sudo apt-get update -y
+    - name: Upgrade APT
+      shell: sudo apt-get upgrade -y
+    - name: install sensu package
+      apt:
+        name: sensu
+        update_cache: yes
+    - name: Enable the Sensu client on system boot
+      shell: sudo update-rc.d sensu-client defaults
+#    - name: creatins ssl directory
+#      shell: mkdir /etc/sensu/ssl
+#    - name: copy Sensu environment
+#      copy: src=/home/cit/sensu/conf.d/client.json dest=/etc/sensu/conf.d/client.json
+#    - name: copy Sensu environment
+#      copy: src=/home/cit/sensu/config.json dest=/etc/sensu/config.json
+#    - name: copy Sensu environment
+#      copy: src=/home/cit/sensu/ssl/cert.pem dest=/etc/sensu/ssl/cert.pem
+#    - name: copy Sensu environment
+#      copy: src=/home/cit/sensu/ssl/key.pem dest=/etc/sensu/ssl/key.pem
+#    - name: copy Sensu environment
+#      shell: sudo scp -r scs@10.10.29.22:/etc/sensu/* /etc/sensu/.
+
+

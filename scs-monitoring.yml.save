@@ -1,0 +1,9 @@
+- hosts: scs
+  tasks:
+    - name: Install updates
+      apt:  update_cache: - name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yesyes 
+      become: yes 
+      become_method: sudo
+     
